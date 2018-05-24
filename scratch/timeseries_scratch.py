@@ -45,8 +45,6 @@ layout = dict(
     )
 )
 
-print(days[0])
-
 pyoff.plot(
     dict(data=data, layout=layout)
 )
