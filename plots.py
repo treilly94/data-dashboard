@@ -5,7 +5,7 @@ import plotly.graph_objs as go
 
 def get_timeseries():
     # Read data
-    df = pd.read_csv("./test_data/timeseries_test_data.csv")
+    df = pd.read_csv("./scratch/test_data/timeseries_test_data.csv")
     df.DateTime = pd.to_datetime(df.DateTime)
 
     # Identify days
@@ -47,4 +47,4 @@ def get_timeseries():
         )
     )
 
-    return pyoff.plot(dict(data=data, layout=layout), show_link=False, output_type="div", include_plotlyjs=False)
+    return pyoff.plot(dict(data=data, layout=layout), show_link=False, output_type="div", include_plotlyjs=True)
