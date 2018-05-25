@@ -45,4 +45,4 @@ def get_timeseries():
     return pyoff.plot(dict(data=data, layout=layout),
                       show_link=False,
                       output_type="div",
-                      include_plotlyjs=True)
+                      include_plotlyjs=False)
