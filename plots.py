@@ -1,6 +1,6 @@
 import pandas as pd
-import plotly.offline as pyoff
 import plotly.graph_objs as go
+import plotly.offline as pyoff
 
 
 def get_timeseries():
@@ -8,23 +8,15 @@ def get_timeseries():
     df = pd.read_csv("./scratch/test_data/timeseries_test_data.csv")
     df.DateTime = pd.to_datetime(df.DateTime)
 
-    # Identify days
-    df["Weekday"] = df.DateTime.dt.weekday
-    df["Weekday_name"] = df.DateTime.dt.weekday_name
-
-    # Get days
-    days = [df[df.Weekday == d] for d in range(7)]
-
     # Make Scatterplot
-    data = []
-    for dayDf in days:
-        trace = go.Scatter(
-            x=dayDf.DateTime.dt.date,
-            y=dayDf.DateTime.dt.hour,
+    data = [
+        go.Scatter(
+            x=df.DateTime.dt.date,
+            y=df.DateTime.dt.hour,
             mode="lines",
-            text=dayDf.DateTime.dt.weekday_name
+            text=df.DateTime.dt.weekday_name
         )
-        data.append(trace)
+    ]
 
     layout = dict(
         title='Scatter',
@@ -44,7 +36,13 @@ def get_timeseries():
             ),
             rangeslider=dict(),
             type='date'
+        ),
+        yaxis=dict(
+            title='time'
         )
     )
 
-    return pyoff.plot(dict(data=data, layout=layout), show_link=False, output_type="div", include_plotlyjs=True)
+    return pyoff.plot(dict(data=data, layout=layout),
+                      show_link=False,
+                      output_type="div",
+                      include_plotlyjs=True)
