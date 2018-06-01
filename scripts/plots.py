@@ -1,11 +1,15 @@
 import pandas as pd
 import plotly.graph_objs as go
+from scripts.googleAPI import SheetsAPI
 import plotly.offline as pyoff
 
 
 def get_timeseries():
     # Read data
-    df = pd.read_csv("./scratch/test_data/timeseries_test_data.csv")
+    sheet_id = "1RORhvV7Lb1X3o-qPHawxfcxxgRxI6Zgt_Aq9Jog1RYE"
+    sheet_range = "A:A"
+    api = SheetsAPI()
+    df = api.get_df(sheet_id, sheet_range)
     df.DateTime = pd.to_datetime(df.DateTime)
 
     # Make Scatterplot
@@ -81,7 +85,6 @@ def get_week():
     )
 
     fig = go.Figure(data=data, layout=layout)
-    print(days[0])
 
     return pyoff.plot(fig,
                       show_link=False,
