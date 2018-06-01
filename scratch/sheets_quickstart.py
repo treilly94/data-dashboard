@@ -17,15 +17,12 @@ if not creds or creds.invalid:
 service = build('sheets', 'v4', http=creds.authorize(Http()))
 
 # Call the Sheets API
-SPREADSHEET_ID = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'
-RANGE_NAME = 'Class Data!A2:E'
+SPREADSHEET_ID = '1a5taxJnVBzQXxUPz5cHRgFxfBUmIoFMh28HEVopJV38'
+RANGE_NAME = 'EJ17EKG'
 result = service.spreadsheets().values().get(spreadsheetId=SPREADSHEET_ID,
                                              range=RANGE_NAME).execute()
 values = result.get('values', [])
 if not values:
     print('No data found.')
 else:
-    print('Name, Major:')
-    for row in values:
-        # Print columns A and E, which correspond to indices 0 and 4.
-        print('%s, %s' % (row[0], row[4]))
+    print(values)
