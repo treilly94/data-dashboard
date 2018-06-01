@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-import plots as plt
+from scripts import plots as plt
 
 app = Flask(__name__)
 
