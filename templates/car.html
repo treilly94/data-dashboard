@@ -1,16 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
-        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-        <title>DataDashboard</title>
-    </head>
-    <body>
-        <nav>
-            <a href="{{ url_for('index') }}">Home</a>
-        </nav>
+{% extends "layout.html" %}
+{% block title %}Car{% endblock %}
+{% block content %}
         <h1>Car</h1>
-
-    </body>
-</html>
+{% endblock %}
