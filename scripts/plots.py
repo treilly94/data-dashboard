@@ -55,7 +55,10 @@ def get_timeseries():
 
 def get_week():
     # Read data
-    df = pd.read_csv("./scratch/test_data/timeseries_test_data.csv")
+    sheet_id = "1RORhvV7Lb1X3o-qPHawxfcxxgRxI6Zgt_Aq9Jog1RYE"
+    sheet_range = "A:A"
+    api = SheetsAPI()
+    df = api.get_df(sheet_id, sheet_range)
     df.DateTime = pd.to_datetime(df.DateTime)
 
     days = [
