@@ -16,9 +16,9 @@ class SheetsAPI:
             creds = tools.run_flow(flow, store)
         self.service = build('sheets', 'v4', http=creds.authorize(Http()))
 
-    def get_df(self, sheet_id, range):
+    def get_df(self, sheet_id, sheet_range):
         # Get the values from google sheets
-        result = self.service.spreadsheets().values().get(spreadsheetId=sheet_id, range=range).execute()
+        result = self.service.spreadsheets().values().get(spreadsheetId=sheet_id, range=sheet_range).execute()
         values = result.get('values', [])
         # Convert into a pandas dataframe
         df = pd.DataFrame(values)
